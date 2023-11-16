@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "include/count.h"
 #include <stdio.h>
 
