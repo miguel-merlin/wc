@@ -1,5 +1,5 @@
-#include "count.h"
 #include <stdio.h>
+#include "count.h"
 #include <string.h>
 
 void test_count_lines() {
