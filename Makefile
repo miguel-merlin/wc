@@ -1,11 +1,22 @@
- make main
-cc     main.c   -o main
-ld: Undefined symbols:
-  _count_characters, referenced from:
-      _main in main-a2044f.o
-  _count_lines, referenced from:
-      _main in main-a2044f.o
-  _count_words, referenced from:
-      _main in main-a2044f.o
-clang: error: linker command failed with exit code 1 (use -v to see invocation)
-make: *** [main] Error 1
+CC=gcc
+CFLAGS=-Iinclude
+DEPS = include/count.h
+OBJ = src/main.o src/count.o
+TEST_OBJ = tests/test_count.o src/count.o
+
+src/%.o: src/%.c $(DEPS)
+    $(CC) -c -o $@ $< $(CFLAGS)
+
+tests/%.o: tests/%.c $(DEPS)
+    $(CC) -c -o $@ $< $(CFLAGS)
+
+main: $(OBJ)
+    $(CC) -o $@ $^ $(CFLAGS)
+
+test_count: $(TEST_OBJ)
+    $(CC) -o $@ $^ $(CFLAGS) -lcriterion
+
+.PHONY: clean
+
+clean:
+    rm -f src/*.o tests/*.o main test_count
