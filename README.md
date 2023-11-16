@@ -7,6 +7,7 @@ To use this project, compile the C files and run the resultinf executable with t
 you want to count as an argument. 
 
 ```
+cd src
 make main
 ./main yourfile.txt
 ```
