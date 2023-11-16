@@ -1,19 +1,11 @@
-CC=gcc
-CFLAGS=-I.
-DEPS = count.h
-OBJ = main.o count.o
-TEST_OBJ = test_count.o count.o
-
-%.o: %.c $(DEPS)
-    $(CC) -c -o $@ $< $(CFLAGS)
-
-main: $(OBJ)
-    $(CC) -o $@ $^ $(CFLAGS)
-
-test_count: $(TEST_OBJ)
-    $(CC) -o $@ $^ $(CFLAGS) -lcriterion
-
-.PHONY: clean
-
-clean:
-    rm -f *.o main test_count
+ make main
+cc     main.c   -o main
+ld: Undefined symbols:
+  _count_characters, referenced from:
+      _main in main-a2044f.o
+  _count_lines, referenced from:
+      _main in main-a2044f.o
+  _count_words, referenced from:
+      _main in main-a2044f.o
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+make: *** [main] Error 1
